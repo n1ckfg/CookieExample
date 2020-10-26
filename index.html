@@ -3,12 +3,30 @@
 
 	<head>
 		<title>Cookie Example</title>
+		<style>
+			body {
+				background: gray;
+				font-size: 32px;
+				margin: 1em;
+			}
+		</style>
 		<script src="./cookie-util.js"></script>
 	</head>
 
 	<body>
+		<div id="test"></div>
+
 		<script>
-			checkCookie();
+			let test = document.getElementById("test");
+
+			let timesVisited = parseInt(checkCookie("times_visited", 1, 365));
+
+			test.innerHTML = timesVisited;
+
+			timesVisited++;
+
+			setCookie("times_visited", timesVisited, 365);
+
 		</script>
 	</body>
 
