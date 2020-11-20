@@ -14,19 +14,27 @@
 	</head>
 
 	<body>
-		<div id="test"></div>
+		<div id="test1"></div><br>
+		<div id="test2"></div>
 
 		<script>
-			let test = document.getElementById("test");
+			// Old way
+			let test1 = document.getElementById("test1");
 
-			let timesVisited = parseInt(checkCookie("times_visited", 1, 365));
+			let timesVisited1 = parseInt(checkCookie("times_visited", 1, 365));
+			test.innerHTML = timesVisited1;
+			timesVisited1++;
+			setCookie("times_visited", timesVisited1, 365);
+			
+			// New way
+			// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+			let test2 = document.getElementById("test2");
 
-			test.innerHTML = timesVisited;
-
-			timesVisited++;
-
-			setCookie("times_visited", timesVisited, 365);
-
+			let localStorage = window.localStorage;
+			let timesVisited2 = localStorage.getItem("times_visited");
+			timesVisited2++;
+			test2.innerHTML = timesVisited2;
+			localStorage.setItem("times_visited", timesVisited2);
 		</script>
 	</body>
 
