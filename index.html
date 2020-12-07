@@ -10,31 +10,19 @@
 				margin: 1em;
 			}
 		</style>
-		<script src="./cookie-util.js"></script>
 	</head>
 
 	<body>
-		<div id="test1"></div><br>
-		<div id="test2"></div>
+		<div id="test"></div>
 
 		<script>
-			// Old way
-			let test1 = document.getElementById("test1");
-
-			let timesVisited1 = parseInt(checkCookie("times_visited", 1, 365));
-			test1.innerHTML = timesVisited1;
-			timesVisited1++;
-			setCookie("times_visited", timesVisited1, 365);
-			
-			// New way
 			// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
-			let test2 = document.getElementById("test2");
+			let test = document.getElementById("test");
 
-			let localStorage = window.localStorage;
-			let timesVisited2 = localStorage.getItem("times_visited");
-			timesVisited2++;
-			test2.innerHTML = timesVisited2;
-			localStorage.setItem("times_visited", timesVisited2);
+			let timesVisited = window.localStorage.getItem("times_visited");
+			timesVisited++;
+			test.innerHTML = timesVisited;
+			window.localStorage.setItem("times_visited", timesVisited);
 		</script>
 	</body>
 
